@@ -1,7 +1,7 @@
 import ExpenseItem from "./ExpenseItem";
 import './Expenses.css'
 
-function Expenses(props) {
+const Expenses = (props) =>  {
   const renderList = props.expenses.map((item, index) => (
     <ExpenseItem
       key={index}
