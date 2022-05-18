@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-console.log("ExpenseForm.js");
-
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
@@ -10,38 +8,36 @@ const ExpenseForm = (props) => {
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
-    console.log(event.target.value);
   };
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
-    console.log(event.target.value);
   };
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
-    console.log(event.target.value);
   };
   const submitHandler = (event) => {
-      console.log('submit');
     event.preventDefault();
-    const expenseData= {
-        title : enteredTitle,
-        amount : enteredAmount,
-        date : new Date(enteredDate)
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData);
     //enteredTitle = enteredAmount = enteredDate = ''; ESTO NO SE PUEDE, POR EL useState hook debe usarse con los setX('');
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" 
-          value={enteredTitle}
-           onChange={titleChangeHandler}></input>
+          <input
+            type="text"
+            value={enteredTitle}
+            onChange={titleChangeHandler}
+          ></input>
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
