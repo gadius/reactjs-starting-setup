@@ -3,9 +3,6 @@ import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 
 const ExpenseItem = (props) => {
-  const month = props.date.toLocaleString("en-US", { month: "long" });
-  const day = props.date.toLocaleString("en-US", { day: "2-digit" });
-  const year = props.date.getFullYear();
 
   const [title, setTitle] = useState(props.title); //siempre regresa un arreglo de 2 elementos, variable y la funcion que hace el update de la variable
   //title = nombre variable, setTitle una funcion que se puede usar despues
