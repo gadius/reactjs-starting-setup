@@ -1,23 +1,27 @@
-import Expenses from "./components/Expenses";
-import NewExpense from "./components/NewExpense/NewExpense"
+import React, {useState} from 'react';
+import Phones from "./components/Expenses";
+import NewPhone from "./components/NewExpense/NewExpense"
 
 const App = () =>  {
-  const expenses_list = [
-    { key: 1, title: "titulo", amount: 1, date: new Date() },
-    { key: 2, title: "titulo", amount: 1, date: new Date() },
-    { key: 2, title: "titulo", amount: 1, date: new Date() },
-    { key: 2, title: "titulo", amount: 1, date: new Date() },
-    { key: 2, title: "titulo", amount: 1, date: new Date() },
-    { key: 2, title: "titulo", amount: 1, date: new Date() },
-  ];
 
-  const addExpenseHandler = expense => {
-    console.log('In App.js',expense);
+  
+  /*const [phones, setPhones] = useState(
+    [
+      { key: 1, name: "titulo", last_name: 1, phone: '2342342341' },
+      { key: 2, name: "titulo", last_name: 1, phone: '4564564564' },
+    ]
+  );*/ 
+  
+  const [phones, setPhones] = useState([]); 
+
+  const addPhoneHandler = phone => {
+    setPhones(prevArray => [...prevArray, phone]);
   };
+
   return (
     <div>      
-      <NewExpense onAddExpense={addExpenseHandler}/>
-      <Expenses expenses={expenses_list} />
+      <NewPhone onAddPhone={addPhoneHandler}/>
+      <Phones phones={phones} />
     </div>
   );
 }

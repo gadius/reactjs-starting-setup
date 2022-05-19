@@ -4,27 +4,22 @@ import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter/ExpensesFilter";
 const Expenses = (props) => {
 
-  const [filteredData, setFilteredData] = useState('2020'); //para inicializar el valor del filtro de busqueda
 
-
-  const renderList = props.expenses.map((item, index) => (
+  const renderList = props.phones
+  .sort((a, b) => a.last_name.toUpperCase() > b.last_name.toUpperCase() ? 1 : -1)
+  .map((item, index) => (
     <ExpenseItem
-      key={index}
-      title={item.title}
-      amount={item.amount}
-      date={item.date}
+      key={Math.random().toString()}
+      name={item.name}
+      last_name={item.last_name}
+      phone={item.phone}
     />
   ));
 
-  const filterDataHandler = (enteredFilterData) => {
-    console.log("Expenses.js", enteredFilterData);
-    setFilteredData(enteredFilterData);
-    console.log("Expenses.js filteredData", filteredData);
-  };
+
 
   return (
     <div>
-      <ExpensesFilter selected={filteredData} onFilterData={filterDataHandler}  />
       <div className="expenses">{renderList}</div>;
     </div>
   );

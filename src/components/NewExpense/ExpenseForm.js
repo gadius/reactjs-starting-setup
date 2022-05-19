@@ -2,66 +2,66 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  const [enteredName, setEnteredName] = useState('Coder');
+  const [enteredLastName, setEnteredLastName] = useState('Byte');
+  const [enteredPhone, setEnteredPhone] = useState('8885559999');
 
-  const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
+  const nameChangeHandler = (event) => {
+    setEnteredName(event.target.value);
   };
-  const amountChangeHandler = (event) => {
-    setEnteredAmount(event.target.value);
+  const lastChangeHandler = (event) => {
+    setEnteredLastName(event.target.value);
   };
-  const dateChangeHandler = (event) => {
-    setEnteredDate(event.target.value);
+  const phoneChangeHandler = (event) => {
+    setEnteredPhone(event.target.value);
   };
   const submitHandler = (event) => {
     event.preventDefault();
-    const expenseData = {
-      title: enteredTitle,
-      amount: enteredAmount,
-      date: new Date(enteredDate),
+    const phoneData = {
+      name: enteredName,
+      last_name: enteredLastName,
+      phone: enteredPhone,
     };
-    props.onSaveExpenseData(expenseData);
-    //enteredTitle = enteredAmount = enteredDate = ''; ESTO NO SE PUEDE, POR EL useState hook debe usarse con los setX('');
-    setEnteredTitle("");
-    setEnteredAmount("");
-    setEnteredDate("");
+    props.onSavePhoneData(phoneData);
+    setEnteredName("");
+    setEnteredLastName("");
+    setEnteredPhone("");
   };
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label>Title</label>
+          <label>First name</label>
           <input
             type="text"
-            value={enteredTitle}
-            onChange={titleChangeHandler}
+            value={enteredName}
+            onChange={nameChangeHandler}
+            
           ></input>
         </div>
         <div className="new-expense__control">
-          <label>Amount</label>
+          <label>Last name</label>
           <input
-            type="number"
-            value={enteredAmount}
-            min="0.01"
-            step="0.01"
-            onChange={amountChangeHandler}
+            type="text"
+            value={enteredLastName}
+            onChange={lastChangeHandler}
+            required
           ></input>
         </div>
         <div className="new-expense__control">
-          <label>Date</label>
+          <label>Phone (Format expected: 8885559999)</label>
           <input
-            type="date"
-            value={enteredDate}
-            min="2019-01-01"
-            max="2030-01-01"
-            onChange={dateChangeHandler}
+            placeholder="XXXXXXXXX"
+            pattern="[0-9]{10}"
+            type="tel"
+            value={enteredPhone}
+            onChange={phoneChangeHandler}
+            required
           ></input>
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit">Add Expense</button>
+        <button type="submit">Submit</button>
       </div>
     </form>
   );
