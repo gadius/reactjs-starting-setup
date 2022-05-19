@@ -6,7 +6,7 @@ const ExpenseItem = (props) => {
     <div className="expense-item">
       <div className="expense-date">
         <p>
-          <a href="tel:+4733378901">{props.phone}</a>
+          <a href={'tel:+'+props.phone}>{props.phone}</a>
         </p>        
       </div>
       <div className="expense-item__description">
